@@ -2,9 +2,9 @@ import React, { Component }  from 'react'
 import { Card } from 'semantic-ui-react'
 import Host from './Host'
 
-const HostList = () => (
+const HostList = (props) => (
   <Card.Group itemsPerRow={6}>
-    { /* Your code here...or outside the return. Feel free to change how you render and return this JSX */}
+    { props.hosts.map(host=> < Host host={host} highlightSelected={props.highlightSelected}/>)}
   </Card.Group>
 )
 

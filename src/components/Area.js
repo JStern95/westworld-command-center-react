@@ -1,12 +1,19 @@
 import React from 'react';
 import HostList from './HostList';
 
-const Area = () => {
+const Area = (props) => {
+
+  const makeNamePretty = () =>{
+    return props.areaObj.name.split("_")
+    .map(partOfName=>{
+      return partOfName.charAt(0).toUpperCase() + partOfName.slice(1)
+    }).join(" ")
+  }
 
   return(
-    <div style={style} className='area'>
-      <h3>{ /* An area has a name. And not a name with an underscore and lower case letters.... */}</h3>
-      <HostList />
+    <div style={props.areaObj.style} className='area'>
+      <h3>{makeNamePretty()}</h3>
+      <HostList hosts={props.hosts.filter(host=> host.area===props.areaObj.name)} highlightSelected={props.highlightSelected}/>
     </div>
   )
 }
